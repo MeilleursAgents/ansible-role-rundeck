@@ -1,9 +1,26 @@
 ---
 # tasks file for rundeck
+
+- name: "create rundeck group"
+  group:
+    name: "rundeck"
+    state: "present"
+
+- name: "create rundeck user"
+  user:
+    name: "rundeck"
+    group: "rundeck"
+    createhome: no
+    home: "{{ rundeck_rdeckbase }}"
+    state: "present"
+
 - name: create rundeck directories
   file:
     path: "{{ item }}"
     state: directory
+    owner: "rundeck"
+    group: "rundeck"
+    recurse: yes
   with_items:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
