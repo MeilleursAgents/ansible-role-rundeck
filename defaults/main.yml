@@ -1,5 +1,7 @@
 ---
 # defaults file for rundeck
+rundeck_version: 3.2.8
+rundeck_release_date: 20200608
 
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
